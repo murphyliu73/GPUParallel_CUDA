@@ -4,6 +4,12 @@
 #include <fstream>
 
 
+enum class FlipMode {
+    Horizontal,
+    Vertical
+};
+
+
 template <typename T>
 T* readRawData(const std::string& filename, int width, int height) {
     // 打开二进制文件

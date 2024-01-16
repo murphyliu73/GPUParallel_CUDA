@@ -13,7 +13,6 @@ using namespace std;
 #define NUM_THREADS 128
 
 
-
 template <typename T>
 void FlipHRawImageFunc(const T* inputImage, T* outputImage, int width, int height) 
 {
@@ -36,7 +35,7 @@ void FlipVRawImageFunc(const T* inputImage, T* outputImage, int width, int heigh
 	{
 		for (w = 0; w < width; ++w)
 		{
-			outputImage[h * width + w] = inputImage[(height - 1 - h) * width + width];
+			outputImage[h * width + w] = inputImage[(height - 1 - h) * width + w];
 		}
 	}
 }
@@ -68,31 +67,31 @@ int main()
 	double PerImageTime = 0;
 	double PerImage_onePixelTime = 0;
 
-	bool modeV = false; //default to vertical flip
-	bool modeH = true; //default to horizontal flip
+	//FlipMode flipmode = FlipMode::Horizontal;
+	FlipMode flipmode = FlipMode::Vertical;
 
 	uint16_t* result = new uint16_t[dataSize];
 
 	CPUTimer timer;
 
-	for (int i = 0; i < REPS; ++i)
+	int iter;
+	switch (flipmode)
 	{
-		if (modeH == true)
+	case FlipMode::Horizontal:
+		for (iter = 0; iter < REPS; ++iter)
 		{
 			FlipHRawImageFunc(rawData, result, width, height);
-			std::cout << "Horizontal flip" << endl;
 		}
-		else if (modeV == true)
+		std::cout << "Horizontal flip" << endl;
+		break;
+	case FlipMode::Vertical:
+		for(iter = 0; iter < REPS; ++iter)
 		{
-			cout << "Vertical flip" << endl;
+			FlipVRawImageFunc(rawData, result, width, height);
 		}
-		else
-		{
-			cout << "No flip" << endl;
-		}
+		cout << "Vertical flip" << endl;
+		break;
 	}
-		
-
 
 	TotalCPUTime = timer.elapsed();
 	std::cout << "Total execution CPU time: " << TotalCPUTime << " ms" << std::endl;
