@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include <iostream>
 #include <chrono>
-#include <thread>
 
 #include "CPUTimer.h"
 #include "ImageStuff.h"
@@ -68,7 +67,7 @@ int main()
 	double PerImage_onePixelTime = 0;
 
 	//FlipMode flipmode = FlipMode::Horizontal;
-	FlipMode flipmode = FlipMode::Vertical;
+	FlipMode flipmode = FlipMode::Horizontal;
 
 	uint16_t* result = new uint16_t[dataSize];
 

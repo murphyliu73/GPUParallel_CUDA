@@ -66,9 +66,3 @@ void saveRawData(const std::string& filename, const T* data, int width, int heig
     // 关闭文件
     file.close();
 }
-
-
-
-
-
-
