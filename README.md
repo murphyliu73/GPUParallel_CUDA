@@ -16,3 +16,7 @@ changes
 changes
 - consistent with the code ideas in the book about CPU parallelism.
 - use c++ standard library "thread" instead of "pthread".
+
+result
+- use more then 12 threads make more cost time with amd 5900x.
+- use cpu parallel mke the program 4x faster (nums of thread: 12)
