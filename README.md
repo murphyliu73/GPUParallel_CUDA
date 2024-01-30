@@ -10,3 +10,9 @@ changes
 - use fstream to read raw image instead of read bmp files.
 - rewrite horizontal and vertical flip function.
 - use chrono library to calculuate the CPU cost time.
+
+#### Chapter2: Develop the first CPU parallel program
+
+changes
+- consistent with the code ideas in the book about CPU parallelism.
+- use c++ standard library "thread" instead of "pthread".
